@@ -1,0 +1,23 @@
+----------
+/etc/net/ifaces/gre1/options
+
+TUNLOCAL="ip локального внешнего интерфейса"
+TUNREMOTE="ip удаленного внешнего интерфейса"
+TUNTYPE=gre
+TYPE=iptun
+TUNTTL=64
+TUNMTU=1476
+TUNOPTIONS='ttl 64'
+DISABLE=no
+
+----------
+iptables -I INPUT -i "внешний интерфейс" -p 47 -j ACCEPT
+iptables -I OUTPUT -o "внешний интерфейс" -p 47 -j ACCEPT
+
+----------
+ /etc/net/ifaces/gre1/ipv4address
+
+адресс интерфейса gre для роутера
+
+----------
+ifup "название интерфейса gre"
